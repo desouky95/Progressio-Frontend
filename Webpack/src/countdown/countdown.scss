@@ -1,0 +1,51 @@
+$colors: (
+  "blue": #93b5c6,
+  "green": #ddedaa,
+);
+$btnColors: (
+  "blue": (
+    fg: #000,
+    bg:
+      map-get(
+        $map: $colors,
+        $key: "blue",
+      ),
+  ),
+  "green": (
+    fg: #fff,
+    bg:
+      map-get(
+        $map: $colors,
+        $key: "green",
+      ),
+  ),
+);
+@each $color, $value in $btnColors {
+  .btn-#{$color} {
+    background: map-get($map: $value, $key: "bg");
+    color: map-get($map: $value, $key: "fg");
+  }
+}
+@each $name, $var in $colors {
+  .bg-#{$name} {
+    background: $var;
+  }
+  .text-#{$name} {
+    color: $var;
+  }
+}
+@for $var from 1 to 100 {
+  .m-#{$var} {
+    margin: $var * 1px;
+  }
+  .p-#{$var} {
+    padding: $var * 1px;
+  }
+  .px-#{$var} {
+    padding-left: calc($var/2) * 1px;
+    padding-right: calc($var/2) * 1px;
+  }
+}
+#count-down {
+  @extend .px-50,.bg-green;
+}
